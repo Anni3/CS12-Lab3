@@ -1,0 +1,33 @@
+#Annie Volovik
+#1260637
+#CMPS12B/m
+#10/26/2014
+
+JFLAGS = -g
+JC = javac
+JVM= java
+JUNITJAR = "junit-4.12-beta-1.jar:hamcrest-core-1.3.jar:."
+JUNITVAR = org.junit.runner.JUnitCore
+FILE=
+.SUFFIXES:  .java .class
+
+.java.class:
+	$(JC) $(JFLAGS) $*.java
+
+CLASSES = Calc.java 
+
+
+default: Calc.class
+
+Calc.class: Calc.java
+	$(JC) $(JFLAGS) Calc.java
+
+#CalcTest.class: 
+#	$(JC) $(JUNITJAR)$(JUNITVAR) CalcTest.class
+
+#run: $(MAIN).class
+#	$(JVM) $(MAIN)
+#java -cp "junit-4.12-beta-1.jar:hamcrest-core-1.3.jar:." org.junit.runner.JUnitCore
+#CalcTest
+clean:
+	$(RM) *.class

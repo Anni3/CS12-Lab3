@@ -11,22 +11,19 @@ JUNITJAR = "junit-4.12-beta-1.jar:hamcrest-core-1.3.jar:."
 JUNITVAR = org.junit.runner.JUnitCore
 .SUFFIXES:  .java .class
 .java.class:
-	$(JC) $(JFLAGS) $*.java
+	$(JC) $(JFLAGSCP) $(JUNITJAR) $*.java
 
-CLASSES = Calc.java
+CLASSES = CalcTest.java
 
 default: classes
 
 classes: $(CLASSES:.java=.class)
 
+#CalcTest.class: CalcTest.java
+#	$(JC) $(JFLAGSCP) $(JUNITJAR) CalcTest.class
+
 JAVATEST= CalcTest
-
-test: UnitTest
-
-UNITTESTCLASSES = CalcTest.java
-
-UnitTest: 	
-	$(JC) $(JFLAGSCP) $(JUNITJAR) $(UNITTESTCLASSES)
+test:
 	java -cp $(JUNITJAR) $(JUNITVAR) $(JAVATEST)
 
 clean:
