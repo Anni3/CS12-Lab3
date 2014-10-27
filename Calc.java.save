@@ -1,0 +1,90 @@
+public class Calc {
+	
+	//initialize array of doubles
+	private double [] numStack;
+	//initialize top of pile as an integer
+	private int top;
+	
+	//Constructor
+	public Calc(){
+		top = -1;
+		numStack = new double[100];
+	}
+	
+	//push a number
+	public void push(double x){
+		if(top>101)throw new IndexOutOfBoundsException();
+		top++;
+		numStack[top]=x;
+	}
+	
+	//pop top number (removes)
+	public double pop(){
+		if (top==-1)throw new RuntimeException();
+		top--;
+		return numStack[top+1];
+	}
+	
+	//peek at top number (don't remove)
+	public double peek(){
+		if (top==-1)throw new RuntimeException();
+		return numStack[top];
+	}
+	
+	//add top two numbers
+	public void add(){
+		if (top<1)throw new RuntimeException();
+		//addition
+		double topStack=this.pop();
+		double nextStack=this.pop();
+		this.push(topStack+nextStack);
+		return;
+	}
+	
+	//subtract top two numbers (top on right side)
+	public void subtract(){
+		if (top<1)throw new RuntimeException();
+		//subtract
+		double topStack=this.pop();
+		double nextStack=this.pop();
+		this.push(nextStack-topStack);
+		return;
+		
+	}
+	
+	//multiply top two numbers
+	public void multiply(){
+		if (top<1)throw new RuntimeException();
+		//multiple
+		double topStack=this.pop();
+		double nextStack=this.pop();
+		this.push(topStack*nextStack);
+		return;
+	}
+	
+	//divide top two numbers
+	public void divide(){
+		if (top<1)throw new RuntimeException();
+		//divide
+		double topStack=this.pop();
+		double nextStack=this.pop();
+		if (nextStack == 0)throw new RuntimeException();
+		this.push(nextStack/topStack);
+		return;
+	}
+	
+	//return how many numbers are in the stack
+	public int depth(){
+		return top+1;	
+	}
+	
+	//reciprocal
+	public dole reciprocal){
+		if(top<0)throw new RuntimeException();
+		if(this.peek() == 0)throw new RuntimeException();
+		
+		//reciprocal=1/x
+		return 1/this.pop();
+	}		
+
+}
